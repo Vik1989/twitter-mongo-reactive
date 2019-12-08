@@ -1,8 +1,11 @@
 package com.vikash.twitter.mongo.controller;
 
+import com.vikash.twitter.mongo.model.Tweet;
 import com.vikash.twitter.mongo.service.TwitterMongoStreamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 
 import java.util.Map;
 
@@ -14,19 +17,18 @@ public class TwitterMongoController {
     private TwitterMongoStreamService twitterMongoStreamService;
 
     @RequestMapping("/getTweets")
-    @GetMapping
-    public String getTweetsFromDb(@RequestParam("userName") String userName){
+    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Tweet> getTweetsFromDb(@RequestParam(value = "userName",required = false) String userName){
 
-        twitterMongoStreamService.getTweetsFromDb();
-        return "";
+       return twitterMongoStreamService.getTweetsFromDb();
+
     }
 
-    @RequestMapping("/getTweetsFromTwitter")
+    @RequestMapping(value = "/streamTweets", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     @GetMapping
     public String getTweetsFromTwitter(@RequestParam("userName") String userName){
 
-
-        return "";
+        return twitterMongoStreamService.streamTweets();
     }
 
     @RequestMapping("/saveTweets")

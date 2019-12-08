@@ -5,14 +5,19 @@ import org.springframework.data.annotation.Id;
 public class Tweet {
 
     @Id
-    private String id;
+    private Integer id;
     private String tweet;
 
-    public String getId() {
+    public Tweet(Integer id, String tweet) {
+        this.id = id;
+        this.tweet = tweet;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -22,5 +27,13 @@ public class Tweet {
 
     public void setTweet(String tweet) {
         this.tweet = tweet;
+    }
+
+    @Override
+    public String toString() {
+        return "Tweet{" +
+                "id='" + id + '\'' +
+                ", tweet='" + tweet + '\'' +
+                '}';
     }
 }

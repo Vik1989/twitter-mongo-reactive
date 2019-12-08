@@ -15,10 +15,10 @@ public class Twitter4jConfig {
 
         ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
 
-        configurationBuilder.setOAuthAccessToken("Your access token")
-                .setOAuthAccessTokenSecret("your access token secret ")
-                .setOAuthConsumerKey("your consumer key")
-                .setOAuthConsumerSecret(" your consumer secret");
+        configurationBuilder.setOAuthAccessToken("1367546552-KGjRj5Y50oVrYUr2KkKQuO6QzlFFtEAXk71EHnT")
+                .setOAuthAccessTokenSecret("8EBKV6RSzCshoKf7Jz78kdQAIn37LNCzbY55SgpIQimr5")
+                .setOAuthConsumerKey("7Gyx5jDjfXcvqbkfrLPf2QfT1")
+                .setOAuthConsumerSecret("KEHNo5qinYOPR718MTYqOdVtJRNzDdSOunsBHCJ5bsCIcTYxZT");
 
         twitter4j.conf.Configuration config = configurationBuilder.build();
 
